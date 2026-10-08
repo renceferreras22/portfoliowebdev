@@ -518,11 +518,7 @@ h2 {
     background: var(--red);
 }
 
-.gp span {
-    color: var(--yellow);
-    font-size: 0.9rem;
-    font-weight: 700;
-}
+
 
 .gp h3 {
     margin: 0.3rem 0 0.6rem;

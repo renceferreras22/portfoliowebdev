@@ -638,3 +638,165 @@ footer {
         scroll-behavior: auto !important;
     }
 }
+
+/* ---------- RESPONSIVE SCREEN FIT ---------- */
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+img,
+video {
+    max-width: 100%;
+}
+
+.wrap {
+    width: 100%;
+}
+
+/* Prevent grid and flex items from forcing horizontal overflow */
+.hero .wrap,
+.about,
+.details,
+.grid,
+.nav-right {
+    min-width: 0;
+}
+
+.about > *,
+.details > *,
+.grid > *,
+.hero .wrap > * {
+    min-width: 0;
+}
+
+.about dd,
+.gp p,
+.hero p {
+    overflow-wrap: anywhere;
+}
+
+/* Tablets and smaller laptops */
+@media (max-width: 900px) {
+    .wrap {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .about {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+        gap: 1.25rem;
+    }
+
+    .details {
+        grid-template-columns: minmax(120px, 0.7fr) minmax(0, 1.3fr);
+        gap: 1rem;
+    }
+
+    .hero .wrap {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    }
+}
+
+/* Phones and small tablets */
+@media (max-width: 760px) {
+    nav .wrap {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .nav-right {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+    }
+
+    .hero .wrap,
+    .about,
+    .details {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero {
+        padding: 3.5rem 0;
+    }
+
+    .num {
+        font-size: clamp(7rem, 30vw, 12rem);
+        -webkit-text-stroke-width: 3px;
+    }
+
+    .photo {
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+    }
+}
+
+/* Narrow phones */
+@media (max-width: 480px) {
+    body {
+        font-size: 1rem;
+    }
+
+    .wrap,
+    nav .wrap {
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
+    }
+
+    nav .wrap {
+        align-items: flex-start;
+    }
+
+    .nav-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    nav ul {
+        gap: 0.4rem 0.75rem;
+    }
+
+    .brand-logo {
+        flex: 0 0 44px;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    h2 {
+        font-size: clamp(1.7rem, 8vw, 2.3rem);
+    }
+
+    .hero h1 {
+        font-size: clamp(2.4rem, 12vw, 4rem);
+    }
+
+    .hero p {
+        max-width: 100%;
+    }
+
+    .grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .about dl {
+        grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+        gap: 0.5rem 0.75rem;
+    }
+
+    .card {
+        padding: 1.25rem;
+    }
+}

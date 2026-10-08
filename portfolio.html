@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio | Your Name</title>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfoliostyle.css">
+</head>
+
+<body>
+
+    <!-- SPLASH INTRO: plays intro.mp4 first (controlled by script.js) -->
+    <div id="splash">
+        <video src="introedited.mp4" autoplay muted playsinline></video>
+        <button id="skip">Skip intro</button>
+    </div>
+
+    <!-- Scroll progress bar -->
+    <div id="rev"></div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="wrap">
+            <a class="logo" href="#top">Formula<b>1</b></a>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#hobbies">Hobbies</a></li>
+                    <li><a href="#activities">Activities</a></li>
+                </ul>
+
+                <!-- LOGO: save your image as logo.png in this folder -->
+                <div class="brand-logo">
+                    <span>LOGO</span>
+                    <img src="logo.png" alt="Ferrari logo" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero" id="top">
+        <div class="wrap">
+            <div>
+                <small>Student Portfolio · Scuderia Ferrari fan</small>
+                <h1>Hi, I'm<br>Rence Ferreras</h1>
+                <p>Chasing good grades the way Lewis chases the apex: full commitment, clean lines, no lifting.</p>
+                <a class="btn" href="#activities">View My Activities</a>
+            </div>
+            <div class="num" aria-hidden="true">44</div>
+        </div>
+    </header>
+
+    <div class="flag"></div>
+
+
+    <!-- ABOUT ME -->
+    <section id="about">
+        <div class="wrap">
+            <h2>About Me</h2>
+
+            <div class="about">
+
+                <!-- Favorite driver card -->
+                <!-- Hover over this card to show the image -->
+                <div class="card fav">
+
+                    <!-- IMAGE SIDE: save your jpeg as hamilton.jpg in this folder -->
+                    <div class="fav-img">
+                        <span>Add your image<br>(hamilton.jpg)</span>
+                        <img src="lewis.jpg" alt="Lewis Hamilton in his Ferrari" onerror="this.style.display='none'">
+                    </div>
+
+                    <div class="big">44</div>
+                    <h3>Lewis Hamilton</h3>
+                    <p>Scuderia Ferrari</p>
+                    <div class="stats">
+                        <div><b>7</b>World titles</div>
+                        <div><b>#44</b>Race number</div>
+                    </div>
+                    <small class="flip-hint">Hover to see more</small>
+                </div>
+
+                <!-- Personal details (replace with your own) -->
+                <div class="card details">
+
+                    <!-- YOUR PHOTO: save your picture as profile.jpg in this folder -->
+                    <div class="photo">
+                        <span>Add your photo<br>(profile.jpg)</span>
+                        <img src="profile.jpg" alt="Photo of Your Name" onerror="this.style.display='none'">
+                    </div>
+
+                    <dl>
+                        <dt>Name</dt>
+                        <dd>Clarence M. Ferreras</dd>
+
+                        <dt>Age</dt>
+                        <dd>20</dd>
+
+                        <dt>Course</dt>
+                        <dd>BSIT &amp; 3rd Year</dd>
+
+                        <dt>School</dt>
+                        <dd>Pambayang Dalubhasaan ng Marilao</dd>
+
+                        <dt>Location</dt>
+                        <dd>Marilao, Bulacan</dd>
+
+                        <dt>Email</dt>
+                        <dd>renceferreras22@gmail.com</dd>
+
+                        <dt>Motto</dt>
+                        <dd>"If you ever feel like giving up, just give up."</dd>
+                    </dl>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- HOBBIES: --c sets the tyre color, --ink sets the text color on hover (default: dark) -->
+    <section id="hobbies" class="alt">
+        <div class="wrap">
+            <h2>Hobbies</h2>
+
+            <div class="grid">
+                <div class="card tyre" style="--c: #e8002d; --ink: #ffffff">
+                    <i></i>
+                    <h3>Watching F1</h3>
+                    <p>Never missing a Sunday race, and supports Ferrari. Forza Ferrari!</p>
+                </div>
+
+                <div class="card tyre" style="--c: #ffd12e">
+                    <i></i>
+                    <h3>Watching Movies/Series</h3>
+                    <p>Watching makes me feel peace.</p>
+                </div>
+
+                <div class="card tyre" style="--c: #ffffff">
+                    <i></i>
+                    <h3>Animes</h3>
+                    <p>Something special.</p>
+                </div>
+
+                <div class="card tyre" style="--c: #3fb34f">
+                    <i></i>
+                    <h3>Doomscroll Instagram</h3>
+                    <p>Well, im at instagram 24/7. The reels there is my humor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ACTIVITIES: each card links to its own page -->
+    <section id="activities">
+        <div class="wrap">
+            <h2>Activities</h2>
+            <p class="hint">Click a Grand Prix card to open that activity.</p>
+
+            <div class="grid">
+                <a class="card gp" href="activity1.html" data-n="1">
+                    <span>Round 1</span>
+                    <h3>Activity 1</h3>
+                    <p>Short description of what this activity was about.</p>
+                    <em>Open activity</em>
+                </a>
+
+                <a class="card gp" href="activity2.html" data-n="2">
+                    <span>Round 2</span>
+                    <h3>Activity 2</h3>
+                    <p>Short description of what this activity was about.</p>
+                    <em>Open activity</em>
+                </a>
+
+                <a class="card gp" href="activity3.html" data-n="3">
+                    <span>Round 3</span>
+                    <h3>Activity 3</h3>
+                    <p>Short description of what this activity was about.</p>
+                    <em>Open activity</em>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="flag"></div>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Your Name · Made with red-hot passion for Ferrari &amp; Lewis Hamilton
+    </footer>
+
+    <script src="portfolioscript.js"></script>
+</body>
+
+</html>

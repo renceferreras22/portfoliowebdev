@@ -390,8 +390,9 @@ h2 {
     object-fit: cover;
 }
 
-/* Show the image while hovering */
-.fav:hover .fav-img {
+/* Show the image while hovering (mouse) or tapping (phones) */
+.fav:hover .fav-img,
+.fav:focus .fav-img {
     opacity: 1;
 }
 
@@ -606,78 +607,77 @@ footer {
 }
 
 
-/* ---------- 10. RESPONSIVE & ACCESSIBILITY ---------- */
+/* ---------- 10. RESPONSIVE & ACCESSIBILITY ----------
+   Fits phones, tablets, laptops, desktops and big screens.
+   Order: base fixes > big screens > tablets > phones > small phones > motion */
 
-/* Phones and small tablets */
-@media (max-width: 760px) {
-    .hero {
-        background: linear-gradient(180deg, var(--dark) 0 62%, var(--red) 62.1%);
-    }
-
-    .hero .wrap,
-    .about,
-    .details {
-        grid-template-columns: 1fr;
-    }
-
-    .photo {
-        max-width: 220px;
-    }
-
-    .num {
-        -webkit-text-stroke-width: 3px;
-    }
+/* Base fixes for every screen size */
+html {
+    -webkit-text-size-adjust: 100%;   /* stops phones from enlarging text in landscape */
 }
 
-/* Turns off animations for people who prefer less motion */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-/* ---------- RESPONSIVE SCREEN FIT ---------- */
-html,
 body {
-    width: 100%;
-    min-height: 100%;
-    overflow-x: hidden;
+    min-height: 100vh;
+    overflow-x: clip;                 /* no sideways scrolling (keeps the sticky menu working) */
 }
 
 img,
 video {
     max-width: 100%;
+    height: auto;
 }
 
 .wrap {
     width: 100%;
 }
 
-/* Prevent grid and flex items from forcing horizontal overflow */
-.hero .wrap,
-.about,
-.details,
-.grid,
+/* Let grid/flex children shrink instead of pushing the page wider */
+.hero .wrap > *,
+.about > *,
+.details > *,
+.grid > *,
 .nav-right {
     min-width: 0;
 }
 
-.about > *,
-.details > *,
-.grid > *,
-.hero .wrap > * {
-    min-width: 0;
-}
-
+/* Long words or emails wrap instead of overflowing */
 .about dd,
 .gp p,
 .hero p {
     overflow-wrap: anywhere;
 }
 
-/* Tablets and smaller laptops */
+/* The intro video shows fully (no heavy cropping) on tall phone screens */
+@media (orientation: portrait) {
+    #splash video {
+        object-fit: contain;
+    }
+}
+
+
+/* ----- Big screens (large monitors, TVs): scale everything up ----- */
+@media (min-width: 1400px) {
+    html {
+        font-size: 112.5%;
+    }
+
+    .wrap {
+        max-width: 1200px;
+    }
+}
+
+@media (min-width: 2000px) {
+    html {
+        font-size: 137.5%;
+    }
+
+    .wrap {
+        max-width: 1500px;
+    }
+}
+
+
+/* ----- Tablets and small laptops ----- */
 @media (max-width: 900px) {
     .wrap {
         padding-left: 1rem;
@@ -693,13 +693,10 @@ video {
         grid-template-columns: minmax(120px, 0.7fr) minmax(0, 1.3fr);
         gap: 1rem;
     }
-
-    .hero .wrap {
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    }
 }
 
-/* Phones and small tablets */
+
+/* ----- Phones and small tablets ----- */
 @media (max-width: 760px) {
     nav .wrap {
         padding-left: 1rem;
@@ -716,14 +713,20 @@ video {
         gap: 0.5rem 1rem;
     }
 
-    .hero .wrap,
-    .about,
-    .details {
-        grid-template-columns: minmax(0, 1fr);
+    nav ul a {
+        padding: 0.45rem 0;           /* bigger tap area for fingers */
     }
 
     .hero {
         padding: 3.5rem 0;
+        background: linear-gradient(180deg, var(--dark) 0 62%, var(--red) 62.1%);
+    }
+
+    /* One column instead of two */
+    .hero .wrap,
+    .about,
+    .details {
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .num {
@@ -739,9 +742,14 @@ video {
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
     }
+
+    .page-head {
+        padding: 3rem 0 2rem;
+    }
 }
 
-/* Narrow phones */
+
+/* ----- Small phones ----- */
 @media (max-width: 480px) {
     body {
         font-size: 1rem;
@@ -764,10 +772,6 @@ video {
 
     nav ul {
         gap: 0.4rem 0.75rem;
-    }
-
-    .brand-logo {
-        flex: 0 0 44px;
     }
 
     section {
@@ -797,5 +801,21 @@ video {
 
     .card {
         padding: 1.25rem;
+    }
+
+    /* Activity pages: full-width Previous / Next buttons */
+    .pager .btn {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+}
+
+
+/* ----- Turns off animations for people who prefer less motion ----- */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
     }
 }
